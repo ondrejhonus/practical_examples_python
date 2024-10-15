@@ -150,11 +150,54 @@ Použijte kombinaci různý možností pro práci s řetězci (včetně různýc
 funkční kód, tím lepší).
 
 1. Převeďte "česky" zadané datum - např. 12. 10. 2020 - do podoby "databázové" podoby - např. 2020-10-12
+'''
+from datetime import datetime
+
+czech_date = "12. 10. 2020"
+
+cz_date_to_obj = datetime.strptime(czech_date, "%m. %d. %Y")
+obj_to_db_date = cz_date_to_obj.strftime("%Y-%m-%d")
+print(obj_to_db_date)
+
+
+'''
+
 2. Vytvořte funkci, která vyrobí ze zadaného sousloví:
    a) identifikátor pro proměnné používané v Pythonu - např. To je proměnná v Pythonu = to_je_promenna_v_pythonu
    b) identifikátor pro camel syntax v JS - např. To je proměnná v Pythonu = toJePromennaVPythonu 
    Obě možnosti by měly být vyřešeny v jedné funkci s využitím parametrů.
    Kdo si chce úkol trochu zjednodušit, nemusí řešit znaky s českou diakritikou. 
+'''
+def words_to_snake_case(words):
+    return '_'.join(words.replace('-', ' ').lower().split())
+
+print(words_to_snake_case("Test snake case"))
+    
+def words_to_camel_case(words):
+   camel_case = ''.join(word.capitalize() if i > 0 else word.lower() for i, word in enumerate(words.replace('-', ' ').split()))
+   return camel_case
+print(words_to_camel_case("Test camel case"))
+
+'''
+
 3. Vytvořte funkci, která vygeneruje náhodná hesla pro počet osob zadaný v parametru tak, aby heslo začínalo
    3 velkými písmeny, pokračovalo 3 malými písmeny, jedním speciálním znakem (-/+*) a končilo 3 náhodnými číslicemi.
 '''
+import random
+import string
+count_of_pass = input("How many password do you want?")
+spec_chars = '-/+*'
+def random_passwd():
+   for i in range(int(count_of_pass)):
+      passwd = ''
+      for j in range(3):
+         passwd += random.choice(string.ascii_uppercase)
+      for j in range(3):
+         passwd += random.choice(string.ascii_lowercase)
+      passwd += random.choice(spec_chars)
+      for j in range(3):
+         passwd += str(random.randint(0,10))
+   return passwd
+
+for i in range(int(count_of_pass)):
+   print(f"Password no.{i+1}: {random_passwd()}")

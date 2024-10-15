@@ -30,7 +30,9 @@ Některé objekty mohou mít explicitně přiřazené jméno, obecně označovan
 '''Úkol A'''
 #? Najděte na Internetu, jakými funkcemi lze v Pythonu zjistit
 #? a) typ objektu
+# print(type(students_count))
 #? b) identitu objektu (jeho adresu v paměti)
+# print(id(rating))
 #? Ukažte to na příkladech proměnných students_count, rating, is_published a vypište výstupy do konzole
 
 # Numerické operátory
@@ -66,13 +68,28 @@ hexadecimal = 0x12c #Hexadecimal Literal
 
 '''Úkol B'''
 #? Vypište do poznámky všechny bitové operátory, které nabízí Python
-#? Do proměnné myself_binary uložte binární číslo vytvořené na základě osmi prvních znaků z vašeho jména a příjmení (souhláska = 1, samohláska 0)
-#? Příklad - HildaDok: 10110101
-#? Vypište toto binární číslo v desítkové soustavě
-#? Pro toto binární číslo proveďte nejprve bitový posun o 2 bity vpravo, poté vypište výsledek v desítkové soustavě
-#? Proveďte bitový součin hexadecimálního čísla "1A" a vašeho binárního čísla a opět vypište v desítkové soustavě
-#? Výsledek zobrazte jako formátovaný řetězec - např. "Binární součin čísla 0b11010 a 0b10110101 je 0b10000"
+# - & and
+# - | or
+# - ^ XOR
+# - ~ NOT
+# - << left bitshift
+# - >> right bitshift
 
+# Do proměnné myself_binary uložte binární číslo vytvořené na základě osmi prvních znaků z vašeho jména a příjmení (souhláska = 1, samohláska 0)
+# Příklad - HildaDok: 10110101
+myself_binary = '10001010'
+
+# Vypište toto binární číslo v desítkové soustavě
+dec = int(myself_binary, 2)
+print("Binarni cislo na dec:", dec)
+
+# Pro toto binární číslo proveďte nejprve bitový posun o 2 bity vpravo, poté vypište výsledek v desítkové soustavě
+print("bitovém posun o 2 bity vpravo na dec:", dec >> 2)
+#? Proveďte bitový součin hexadecimálního čísla "1A" a vašeho binárního čísla a opět vypište v desítkové soustavě
+hex = 0x1A
+print(f"binarni {myself_binary} a hexadecimalni {hex} soucet je: {hex & dec}")
+#? Výsledek zobrazte jako formátovaný řetězec - např. "Binární součin čísla 0b11010 a 0b10110101 je 0b10000"
+print(f"binarni {myself_binary} a hexadecimalni {bin(hex)} soucet je: {bin(hex & dec)}")
 
 '''Python plně podporuje operace v plovoucí řádové čárce (tj. desetinná čísla). 
 Operátor pracující s různými typy operandů si nejprve zkonvertuje celá čísla na čísla 
