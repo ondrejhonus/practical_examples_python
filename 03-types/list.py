@@ -56,11 +56,11 @@ print(f'\tVypíše každý druhý prvek ze seznamu letters: {letters[::2]}')
 # ??? 1. cvičení ???
 # Doplňte podle zadání chybějící u následujících tří výpisů
 print('\n1. Cvičení\n***********************************************************************************************')
-print(f'\tVypíše poslední 2 prvky ze seznamu numbers: ???')
-print(f'\tVypíše každý sudý prvek ze seznamu letters: ???')
-print(f'\tVypíše všechny hodnoty z mixed_list kromě dvou posledních: ???')
-print(f'\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: ???')
-print(f'\tVypíše hodnotu předposledního čísla z listu numbers umístěného v seznamu mixed_list: ???')
+print(f'\tVypíše poslední 2 prvky ze seznamu numbers: {numbers[-2:]}')
+print(f'\tVypíše každý sudý prvek ze seznamu letters: {letters[1::2]}')
+print(f'\tVypíše všechny hodnoty z mixed_list kromě dvou posledních: {mixed_list[:-2]}')
+print(f'\tVypíše hodnotu prvku name ze slovníku umístěného v seznamu mixed_list: {mixed_list[4]['name']}')
+print(f'\tVypíše hodnotu předposledního čísla z listu numbers umístěného v seznamu mixed_list: {mixed_list[3][1][-2]}')
 print('***********************************************************************************************\n')
 # ??? Konec 1. cvičení ???
 
@@ -274,18 +274,47 @@ values = [*first, 'ahoj', *second, *'Hello']
 print(f'\tSbalení seznamů do proměnné values: {values}\n')
 
 # ??? 2. cvičení ???
+print(f'\n*************************************\nCvičení 2\n*************************************')
+
 # a) Vygenerujte do proměnné hundreds seznam čísel v rozsahu 1 až 2000. V seznamu budou pouze čísla dělitelná 200 beze zbytku.
+hundreds = []
+for i in range(2001):
+    if i % 200 == 0:
+        hundreds.append(i)
+
+print(hundreds)
 # b) Vygenerujte do proměnné ascii seznam 50 náhodně zvolených znaků - velkých písmen anglické abecedy.
+import random
+import string
+ascii = []
+for i in range(50):
+    ascii.append(random.choice(string.ascii_uppercase))
+print(ascii)
 # c) Vymažte ze seznamu hundreds 3 první a 3 poslední hodnoty.
+hundreds = hundreds[3:-3]
+print(hundreds)
 # d) Projděte seznam ascii a uložte do proměnné unique (typu list) pouze jen ty znaky, které se v seznamu ascii neopakují.
+all = []
+unique = []
+for letter in ascii:
+    if ascii.count(letter) < 2:
+        unique.append(letter)
+print(unique)
+
 # e) Zkraťte délku seznamu ascii podle délky seznamu hundreds. Zkombinujte oba seznamy do proměnné combine tak,
 # aby vznikl seznam n-tic (list of tuples) v podobě (cislo, znak).
 # Snažte se vždy o co nejzhuštěnější kód - ideálně na 1 řádku (+ další řádek s kontrolním výpisem proměnné)
 # import knihovny pro generování náhodných čísel
 from random import randint
 
-print(f'\n*************************************\nCvičení 2\n*************************************')
+ascii = ascii[0:len(hundreds)]
+combine = []
 
+for i in range(len(ascii)):
+    combine.append({ascii[i], hundreds[i]})
+
+for i in combine:
+    print(i)               
 
 
 # ??? 3. cvičení ???
