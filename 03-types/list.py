@@ -327,3 +327,23 @@ for i in combine:
 # Záznamy budou seřazeny podle věku (sestupně).
 
 print(f'\n*************************************\nCvičení 3\n*************************************')
+
+persons.extend([
+    ("Paul", 45, "muž"),
+    ("Xavier", 19, "můž"),
+    ("Božena", 80, "žena"),
+    ("Hedvika", 30, "žena")
+])
+
+women = list(filter(lambda x: x[2] == "žena", persons))
+print(women)
+
+ipeople = list(filter(lambda x: "i" in x[0], persons))
+print(ipeople)
+
+ipeople_csv = ""
+for index, person in enumerate(sorted(ipeople, key=lambda x: x[1], reverse=True)):
+    name, age, gender = person
+    ipeople_csv += (f"{index};{name};{age};{gender}\n")
+
+print(ipeople_csv)
